@@ -116,6 +116,35 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias nvim="sudo /usr/bin/nvim/squashfs-root/usr/bin/nvim"
-alias nssh="sudo ssh -i /mnt/c/Users/premg/azuredev.pem dev@52.183.36.56"
-alias startcd-dev="cd /mnt/c/Users/premg/ChoreDash/vue-router && npm run dev"
+export TEXINPUTS=".:~/texmf:"
+export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
+export DISPLAY=$WSL_HOST:0
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export ANDROID_HOME=~/Android
+export PATH=$PATH:~/nvim-linux64/bin
+export PATH=$PATH:~/Downloads/dart-sass
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:/home/ebr/flutter/bin
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+alias nssh="sudo ssh -i /mnt/c/Users/premg/.CONFIDENTIAL/azuredev.pem dev@52.183.36.56"
+alias startcd-dev="cd ~/Nize\ Systems/ChoreDash/vue-router && npm run dev"
+alias pip3="DISPLAY= pip3"
+alias pip="DISPLAY= pip"
+alias cs32ssh="ssh premkuma@cs32.seas.ucla.edu"
+alias cs35lssh="ssh premkuma@lnxsrv12.seas.ucla.edu"
+# export WSL_HOST_IP="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
+# export ADB_SERVER_SOCKET=tcp:$WSL_HOST_IP:5037
+
+cd ~
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/ebr/.sdkman"
+[[ -s "/home/ebr/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ebr/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+nvm use 16.13.2 >/dev/null
